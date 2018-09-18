@@ -40,7 +40,7 @@ public abstract class Demo {
 
     abstract protected String getName();
 
-    private static Logger logger = LoggerFactory.getLogger(Demo.class);
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
 
     public void runDemo(long dt, int maxIterations) {
         logger.info("Starting demo " + getName());
@@ -50,21 +50,17 @@ public abstract class Demo {
 
         logger.info("adding bodies.");
         addBodies();
-        for (Body body : engine.getBodies()) {
-            body.getState().addPropertyChangeListener(new PropertyChangeListener() {
-
-                public void propertyChange(PropertyChangeEvent evt) {
-                    if (evt.getPropertyName().equals("position")) {
-                        Vector2D newPosition = (Vector2D) evt.getNewValue();
-                        logger.info("position = " + newPosition.toString());
-                    } else if (evt.getPropertyName().equals("velocity")) {
-                        Vector2D newVelocity = (Vector2D) evt.getNewValue();
-                        logger.debug("velocity = " + newVelocity);
-                    }
+        engine.getBodies().forEach((body) -> {
+            body.getState().addPropertyChangeListener((PropertyChangeEvent evt) -> {
+                if (evt.getPropertyName().equals("position")) {
+                    Vector2D newPosition = (Vector2D) evt.getNewValue();
+                    logger.info("position = " + newPosition.toString());
+                } else if (evt.getPropertyName().equals("velocity")) {
+                    Vector2D newVelocity = (Vector2D) evt.getNewValue();
+                    logger.debug("velocity = " + newVelocity);
                 }
-
             });
-        }
+        });
 
         logger.info("adding forces.");
         addForces();

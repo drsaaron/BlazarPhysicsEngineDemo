@@ -21,14 +21,15 @@ $Log$
 
 public class InverseSquareField implements Force {
 
-    private double gravitationalConstant;
-    private double mass;
+    private final double gravitationalConstant;
+    private final double mass;
 
     public InverseSquareField(double constant, double mass) {
         this.gravitationalConstant = constant;
         this.mass = mass;
     }
 
+    @Override
     public Vector2D calculateAcceleration(Body body, long dt) {
         Vector2D currentPosition = body.getState().getPosition();
         double forceMagnitude = - gravitationalConstant * mass / (currentPosition.size() * currentPosition.size());
