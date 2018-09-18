@@ -4,23 +4,23 @@
  */
 package com.blazartech.products.physics.engine.demo;
 
-import com.blazartech.products.physics.engine.demo.demos.Demo;
-import com.blazartech.products.physics.engine.demo.demos.DemoWithInverseSquareField;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  *
  * @author AAR1069
  */
+@SpringBootApplication
+@ComponentScan("com.blazartech")
 public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Demo demo = new DemoWithSimpleField();
-//        demo.runDemo(100, 100);
-
-        Demo demo = new DemoWithInverseSquareField();
-        demo.runDemo(100, 365);
+        ApplicationContext context = new SpringApplicationBuilder(Main.class).headless(false).run(args);
     }
 }

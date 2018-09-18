@@ -7,14 +7,14 @@ package com.blazartech.products.physics.engine.demo.demos;
 
 import com.blazartech.products.physics.engine.Body;
 import com.blazartech.products.physics.engine.PhysicsEngine;
-import com.blazartech.products.physics.engine.PhysicsEngineHelper;
-import com.blazartech.products.physics.engine.PhysicsTimer;
 import com.blazartech.products.physics.engine.Vector2D;
 import com.blazartech.products.physics.engine.demo.gui.MainWindow;
+import com.blazartech.products.physics.engine.timer.PhysicsTimer;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -28,6 +28,7 @@ $Log$
 
 public abstract class Demo {
 
+    @Autowired
     private PhysicsEngine engine;
 
     public PhysicsEngine getEngine() {
@@ -44,7 +45,6 @@ public abstract class Demo {
     public void runDemo(long dt, int maxIterations) {
         logger.info("Starting demo " + getName());
 
-        engine = PhysicsEngineHelper.instance().getEngine();
         engine.removeAllBodies();
         engine.removeAllForces();
 
@@ -77,9 +77,10 @@ public abstract class Demo {
         demoWindow.setVisible(true);
 
         logger.info("running engine.");
-        PhysicsTimer timer = PhysicsEngineHelper.instance().getTimer();
         timer.startEngine(engine, dt, maxIterations);
         demoWindow.showDemo();
     }
 
+    @Autowired
+    private PhysicsTimer timer;
 }
