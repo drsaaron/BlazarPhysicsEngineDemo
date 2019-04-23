@@ -25,8 +25,9 @@ public class UniformVectorForce implements Force {
         this.field = field;
     }
 
-    private Vector2D field;
+    private final Vector2D field;
 
+    @Override
     public Vector2D calculateAcceleration(Body body, long dt) {
         return field;
     }
