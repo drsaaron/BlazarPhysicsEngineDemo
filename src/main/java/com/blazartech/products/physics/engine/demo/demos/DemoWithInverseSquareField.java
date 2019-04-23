@@ -8,7 +8,6 @@ package com.blazartech.products.physics.engine.demo.demos;
 import com.blazartech.products.physics.engine.Body;
 import com.blazartech.products.physics.engine.Vector2D;
 import com.blazartech.products.physics.engine.demo.forces.InverseSquareField;
-import org.springframework.stereotype.Component;
 
 /**
  *
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Component;
 $Log$
 ********************************************************************************/
 
-@Component
 public class DemoWithInverseSquareField extends Demo {
 
     @Override

@@ -12,6 +12,7 @@
 package com.blazartech.products.physics.engine.demo.gui;
 
 import com.blazartech.products.physics.engine.Body;
+import com.blazartech.products.physics.engine.Vector2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -140,6 +141,14 @@ public class DemoPanel extends JPanel {
 
     private static Color[] colorSequence = { Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY };
 
+    public int getRelativePositionX(Vector2D position) {
+        return (int) (getSize().getWidth() / 2) + (int) (position.getX() / getScaleFactor());
+    }
+    
+    public int getRelativePositionY(Vector2D position) {
+        return (int) (getSize().getHeight() / 2) + (int) (position.getY() / getScaleFactor());
+    }
+    
     @Override
     public void paint(Graphics g) {
 
@@ -152,12 +161,23 @@ public class DemoPanel extends JPanel {
         int originX = (int) (size.getWidth() / 2);
         int originY = (int) (size.getHeight() / 2);
         g.drawString("+", originX, originY);
-
+        
+        // some other useful positions
+        Vector2D[] positions = new Vector2D[] { 
+            new Vector2D(500, 0),
+            new Vector2D(0, 500),
+            new Vector2D(-500, 0),
+            new Vector2D(0, -500)
+        };
+        for (Vector2D p : positions) {
+            g.drawString("C", getRelativePositionX(p), getRelativePositionY(p));
+        }
+        
         // right now all bodies are point masses, so just draw circles.
         int colorNumber = 0;
         for (Body b : getBodies()) {
-            int positionX = originX + (int) (b.getState().getPosition().getX() / getScaleFactor());
-            int positionY = originY + (int) (b.getState().getPosition().getY() / getScaleFactor());
+            int positionX = getRelativePositionX(b.getState().getPosition());
+            int positionY = getRelativePositionY(b.getState().getPosition());
             logger.info("drawing body at " + b.getState().getPosition() + " at coordinates (" + positionX + ", " + positionY + ")");
 
             Color color;

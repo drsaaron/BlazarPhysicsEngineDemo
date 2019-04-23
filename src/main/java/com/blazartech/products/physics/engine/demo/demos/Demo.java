@@ -5,13 +5,11 @@
 
 package com.blazartech.products.physics.engine.demo.demos;
 
-import com.blazartech.products.physics.engine.Body;
 import com.blazartech.products.physics.engine.PhysicsEngine;
 import com.blazartech.products.physics.engine.Vector2D;
 import com.blazartech.products.physics.engine.demo.gui.MainWindow;
 import com.blazartech.products.physics.engine.timer.PhysicsTimer;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
