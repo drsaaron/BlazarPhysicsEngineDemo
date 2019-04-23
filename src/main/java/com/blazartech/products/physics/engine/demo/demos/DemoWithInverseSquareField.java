@@ -40,7 +40,7 @@ public class DemoWithInverseSquareField extends Demo {
 
     @Override
     protected void addForces() {
-        InverseSquareField field = new InverseSquareField(6.67e3, 50000, new Vector2D(0, 0));
+        InverseSquareField field = new InverseSquareField(6.67e3 * 50000, new Vector2D(0, 0));
         getEngine().addForce(field);
     }
 

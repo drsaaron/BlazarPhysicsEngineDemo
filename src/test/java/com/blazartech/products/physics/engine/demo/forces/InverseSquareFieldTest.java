@@ -40,7 +40,7 @@ public class InverseSquareFieldTest {
         
         @Bean
         public InverseSquareField getInverseSquareField() {
-            return new InverseSquareField(FIELD_CONSTANT, MASS, CENTER);
+            return new InverseSquareField(FIELD_CONSTANT * MASS, CENTER);
         }
     }
     

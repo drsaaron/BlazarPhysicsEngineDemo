@@ -22,12 +22,10 @@ $Log$
 public class InverseSquareField implements Force {
 
     private final double gravitationalConstant;
-    private final double mass;
     private final Vector2D center;
 
-    public InverseSquareField(double constant, double mass, Vector2D center) {
+    public InverseSquareField(double constant, Vector2D center) {
         this.gravitationalConstant = constant;
-        this.mass = mass;
         this.center = center;
     }
 
@@ -36,7 +34,7 @@ public class InverseSquareField implements Force {
         Vector2D currentPosition = body.getState().getPosition();
         Vector2D relativePosition = currentPosition.subtract(center);
         
-        double forceMagnitude = - gravitationalConstant * mass / (relativePosition.size() * relativePosition.size());
+        double forceMagnitude = - gravitationalConstant / (relativePosition.size() * relativePosition.size());
         double theta = Math.atan2(relativePosition.getY(), relativePosition.getX());
         Vector2D acceleration = new Vector2D(forceMagnitude * Math.cos(theta),
                                              forceMagnitude * Math.sin(theta));
