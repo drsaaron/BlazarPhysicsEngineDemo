@@ -5,10 +5,10 @@
  */
 package com.blazartech.products.physics.engine.demo;
 
-import com.blazartech.products.physics.engine.demo.demos.Demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import com.blazartech.products.physics.engine.demo.demos.Demo;
 
 /**
  *

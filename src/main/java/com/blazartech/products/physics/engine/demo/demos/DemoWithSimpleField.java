@@ -20,7 +20,7 @@ import com.blazartech.products.physics.engine.demo.forces.UniformVectorForce;
 $Log$
 ********************************************************************************/
 
-public class DemoWithSimpleField extends Demo {
+public class DemoWithSimpleField extends DemoBase {
 
     @Override
     protected void addBodies() {

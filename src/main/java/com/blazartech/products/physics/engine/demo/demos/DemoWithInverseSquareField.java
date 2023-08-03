@@ -19,7 +19,7 @@ import com.blazartech.products.physics.engine.demo.forces.InverseSquareField;
 $Log$
 ********************************************************************************/
 
-public class DemoWithInverseSquareField extends Demo {
+public class DemoWithInverseSquareField extends DemoBase {
 
     @Override
     protected void addBodies() {
