@@ -27,6 +27,7 @@ public class SimpleBody implements Body {
      *
      * @return the value of state
      */
+    @Override
     public State getState() {
         return state;
     }
