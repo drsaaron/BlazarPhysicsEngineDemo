@@ -8,25 +8,25 @@ package com.blazartech.products.physics.engine.demo.forces;
 import com.blazartech.products.physics.engine.Body;
 import com.blazartech.products.physics.engine.Vector2D;
 import com.blazartech.products.physics.engine.demo.demos.SimpleBody;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  *
  * @author AAR1069
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class InverseSquareFieldTest {
     
     private static final Logger logger = LoggerFactory.getLogger(InverseSquareFieldTest.class);
@@ -50,22 +50,22 @@ public class InverseSquareFieldTest {
     public InverseSquareFieldTest() {
     }
     
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
     }
     
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
     
-    @Before
+    @BeforeEach
     public void setUp() {
         TEST_BODY.getState().setMass(TEST_MASS);
         TEST_BODY.getState().setPosition(TEST_BODY_INIITAL_POSITION);
         TEST_BODY.getState().setVelocity(TEST_BODY_INITIAL_VELOCITY);
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
 
